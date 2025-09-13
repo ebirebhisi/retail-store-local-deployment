@@ -5,7 +5,7 @@
 Welcome to **InnovateMart**, a rapidly growing e-commerce startup recently funded with Series A to scale globally.  
 As part of our engineering team, this project—codenamed **Project Bedrock**—aimed to deploy the **Retail Store Sample App** and lay the foundation for cloud infrastructure.  
 
-Your role as a Cloud DevOps Engineer was to ensure automation, security, and scalability from day one.
+My role as a Cloud DevOps Engineer was to ensure automation, security, and scalability from day one.
 
 ---
 
@@ -56,8 +56,6 @@ Deploy the application locally using a local Kubernetes cluster (Minikube, Kind,
 Provide screenshots and video evidence showing the application working.
 
 Include documentation of the local setup and previous AWS attempt.
-
-This approach is considered sufficient for grading, even without full cloud deployment.
 
 5. Current Local Deployment
 5.1 Local Setup
