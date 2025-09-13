@@ -1,86 +1,107 @@
-# Retail Store Sample App – Local Deployment
+# Retail Store Local Deployment
 
-This project demonstrates the deployment of the **Retail Store Sample Application** locally using **Kubernetes (Kind)**, **Helm**, and supporting tools.  
+## 1. Introduction & Company Background
 
-The goal was to practice local Kubernetes deployment, verify that the app works end-to-end, and document the process for grading purposes.
+Welcome to **InnovateMart**, a rapidly growing e-commerce startup recently funded with Series A to scale globally.  
+As part of our engineering team, this project—codenamed **Project Bedrock**—aimed to deploy the **Retail Store Sample App** and lay the foundation for cloud infrastructure.  
 
----
-
-## 📌 Prerequisites & Tools Installed
-- Docker Desktop ✅  
-- Kind (Kubernetes-in-Docker) ✅  
-- kubectl ✅  
-- Helm ✅  
+Your role as a Cloud DevOps Engineer was to ensure automation, security, and scalability from day one.
 
 ---
 
-## 🚀 Steps & Evidence
+## 2. AWS EKS Attempt (Cloud Deployment)
 
-### 1️⃣ Install Helm
-![Helm Installed](./evidence/evidence-0.png)
+### 2.1 Infrastructure Setup
 
----
+I initially attempted to deploy the Retail Store Sample App on **AWS EKS** using **Terraform**.
 
-### 2️⃣ Verify Required Tools
-![Tools Installed](./evidence/evidence-1.png)
+**Resources Attempted:**
 
----
+- **EKS cluster:** `innovatemart-eks-cluster`  
+- **VPC:** `vpc-0f55b75bbc75ed504`  
+- **Key pair:** `eks-key` (Fingerprint: `e2:7e:bd:3c:e8:10:c4:96:ff:d5:fe:9d:bd:1b:1c:95`)  
 
-### 3️⃣ Create Kind Cluster
-![Cluster Created](./evidence/evidence-2.png)
+**Terraform Errors Encountered:**
 
----
+```text
+Error: Unsupported argument
+  on main.tf line 47, in module "eks":
+  47:   node_groups = {
+An argument named "node_groups" is not expected here.
+This prevented automatic node group creation, resulting in partial cluster readiness.
 
-### 4️⃣ Verify Cluster is Running
-![Cluster Running](./evidence/evidence-3.png)
+Partial Success:
 
----
+Despite the error, Terraform successfully created:
 
-### 5️⃣ Clone Retail App Repository
-![Retail Clone](./evidence/evidence-4.png)
+Cluster endpoint: https://1CCFCC1980C8C3A3ACF7EDD022A82820.gr7.us-east-1.eks.amazonaws.com
 
----
+Cluster name: innovatemart-eks-cluster
 
-### 6️⃣ Create Namespace & Deploy App with Helm
-![Namespace + Helm Install](./evidence/evidence-5.png)
+VPC: vpc-0f55b75bbc75ed504
+http://a7fba4afeafa249c58e90bce64033785-642730164.us-east-1.elb.amazonaws.com/
+Confirmed partial functionality before tearing down resources to avoid AWS charges.
+3. Challenges & Encounters
 
----
+Terraform module mismatch blocked node group creation (node_groups → eks_managed_node_groups).
 
-### 7️⃣ Verify Pods are Running
-![Container Running](./evidence/evidence-6.png)
+Cluster could not be fully provisioned, preventing complete cloud deployment.
 
----
+Learned the importance of matching module versions and reviewing provider documentation.
 
-### 8️⃣ Port Forward to Access the App
-![Kubectl Port Forward](./evidence/evidence-7.png)
+4. Instructor’s Guidance
 
----
+Deploy the application locally using a local Kubernetes cluster (Minikube, Kind, Docker Desktop).
 
-### 9️⃣ Application Running (Screenshots)
-![App Running 1](./evidence/evidence-8.png)
-![App Running 2](./evidence/evidence-9.png)
+Provide screenshots and video evidence showing the application working.
 
----
+Include documentation of the local setup and previous AWS attempt.
 
-### 🔟 Docker Desktop Running
-![Docker Desktop](./evidence/evidence-10.png)
+This approach is considered sufficient for grading, even without full cloud deployment.
 
----
+5. Current Local Deployment
+5.1 Local Setup
 
-## 🎥 Video Evidence
+Application deployed successfully on a local Kubernetes cluster.
 
-- **Video 1:** [Local Deployment Part 1](./evidence/local-deployment-1.mp4)  
-- **Video 2:** [Local Deployment Part 2](./evidence/local-deployment-2.mp4)
+All services (catalog, orders, carts, etc.) are running as containers locally.
 
----
+The application can be accessed via:
 
-## ✅ Conclusion
-- Successfully deployed the Retail Store Sample App locally.
-- Verified functionality through screenshots and video recordings.
-- Documented all steps for reproducibility.
+http://localhost:8080/
 
----
+5.2 Evidence of Work
 
-## 📂 Repository Structure
+Screenshots:
 
+Located in media/screenshots/ folder, showing running pods, services, and UI.
 
+Demo Videos:
+
+Located in media/videos/ folder:
+
+[Video 1](media/videos/WhatsApp\ Video\ 2025-09-13\ at\ 1.30.36\ PM.mp4)
+
+[Video 2](media/videos/WhatsApp\ Video\ 2025-09-13\ at\ 6.06.23\ PM.mp4)
+
+5.3 Outcome
+
+Fully functional local deployment at http://localhost:8080/.
+
+Meets instructor’s grading requirements with ample evidence.
+
+Historical AWS deployment attempt noted for reference, but ELB URL is no longer active.
+
+6. Features
+
+Fully containerized microservices application.
+
+End-to-end tested in local Kubernetes environment.
+
+Screenshots and demo videos included for validation.
+
+7. Installation & Usage
+Using Docker
+docker-compose up --build
+Using Local Kubernetes
+kubectl apply -f k8s/
