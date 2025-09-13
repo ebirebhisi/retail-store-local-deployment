@@ -41,6 +41,7 @@ Cluster name: innovatemart-eks-cluster
 VPC: vpc-0f55b75bbc75ed504
 http://a7fba4afeafa249c58e90bce64033785-642730164.us-east-1.elb.amazonaws.com/
 Confirmed partial functionality before tearing down resources to avoid AWS charges.
+
 3. Challenges & Encounters
 
 Terraform module mismatch blocked node group creation (node_groups → eks_managed_node_groups).
@@ -49,7 +50,7 @@ Cluster could not be fully provisioned, preventing complete cloud deployment.
 
 Learned the importance of matching module versions and reviewing provider documentation.
 
-4. Instructor’s Guidance
+ Instructor’s Guidance
 
 Deploy the application locally using a local Kubernetes cluster (Minikube, Kind, Docker Desktop).
 
@@ -57,8 +58,8 @@ Provide screenshots and video evidence showing the application working.
 
 Include documentation of the local setup and previous AWS attempt.
 
-5. Current Local Deployment
-5.1 Local Setup
+Current Local Deployment
+Local Setup
 
 Application deployed successfully on a local Kubernetes cluster.
 
@@ -98,8 +99,42 @@ End-to-end tested in local Kubernetes environment.
 
 Screenshots and demo videos included for validation.
 
-7. Installation & Usage
+ Installation & Usage
 Using Docker
 docker-compose up --build
+
+Potential Enhancements / Future Work
+
+While the local deployment is fully functional, there are several opportunities to further improve the project and demonstrate advanced skills:
+
+Full Cloud Deployment
+
+Resolve the Terraform EKS module version issue and deploy the application on AWS EKS with fully provisioned node groups.
+
+Leverage managed AWS services for databases (RDS for MySQL/PostgreSQL, DynamoDB for carts) to make the deployment production-ready.
+
+CI/CD Pipeline Improvements
+
+Automate both infrastructure and application deployment with GitHub Actions or another CI/CD tool.
+
+Include automated tests and security checks in the pipeline.
+
+Scalability & Monitoring
+
+Implement auto-scaling for microservices based on load.
+
+Integrate monitoring and alerting (Prometheus, Grafana, CloudWatch).
+
+Documentation Enhancements
+
+Include step-by-step screenshots or a video tutorial for setting up the local environment.
+
+Add a “Lessons Learned” subsection summarizing challenges faced and key takeaways from both local and cloud deployment attempts.
+
+User Experience Enhancements
+
+Improve front-end UI for a more polished demonstration of the retail store application.
+
+Include sample data seeding scripts for quicker testing and demos.
 Using Local Kubernetes
 kubectl apply -f k8s/
