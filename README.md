@@ -136,5 +136,5 @@ User Experience Enhancements
 Improve front-end UI for a more polished demonstration of the retail store application.
 
 Include sample data seeding scripts for quicker testing and demos.
-Using Local Kubernetes
-kubectl apply -f k8s/
+
+
